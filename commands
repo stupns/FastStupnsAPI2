@@ -1,0 +1,22 @@
+pip install -r requirements.txt
+
+uvicorn app.main:app --reload
+
+http://127.0.0.1:8000/docs - check available
+http://127.0.0.1:8000/redoc
+
+## commands alembic
+
+alembic revision -m "create posts table"
+
+alembic revision                 # Same here, but for generating a random message
+
+alembic current                  # information about the latest executed migration and the current status of the database
+
+alembic heads                    # Show latest revision
+
+alembic upgrade heads
+
+alembic downgrade 86d42f033b57   # return to the previous revision
+
+alembic revision --autogenerate -m "auto-vote"
