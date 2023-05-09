@@ -20,3 +20,23 @@ alembic upgrade heads
 alembic downgrade 86d42f033b57   # return to the previous revision
 
 alembic revision --autogenerate -m "auto-vote"
+
+## commands heroku
+
+heroku login
+heroku run "alembic upgrade head"
+git push heroku main
+heroku ps:restart
+
+## commands ubuntu
+
+su - postgres
+exit
+
+systemctl restart postgresql
+
+adduser stupns                       # add new users
+
+ssh stupns@165.232.127.31
+
+source FastStupnsAPI2/bin/activate
