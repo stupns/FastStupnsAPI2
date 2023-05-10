@@ -287,7 +287,7 @@ After=network.target
 
 [Service]
 User=stupns
-Group=stupns
+Group=www-data
 WorkingDirectory=/home/stupns/app/src/
 Environment="PATH=/home/stupns/app/FastStupnsAPI2/bin"
 EnvironmentFile=/home/stupns/.env

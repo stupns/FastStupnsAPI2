@@ -62,3 +62,10 @@ docker compose down
 docker logs faststupnsapi2-api-1
 
 docker ps -a
+
+docker-compose -f docker-compose-dev.yml up -d
+docker push stupns/fastapistupns2
+_______________________________
+fix bugs
+
+sudo systemctl restart api.service
