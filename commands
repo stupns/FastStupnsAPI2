@@ -50,3 +50,15 @@ systemctl enable api             # always start service when we restart machine
 ## NGINX
 _______________________________________________________________________________________________________________________
 systemctl start nginx
+
+## DOCKER
+_______________________________________________________________________________________________________________________
+docker login
+
+docker image ls
+docker compose up -d
+docker compose down
+
+docker logs faststupnsapi2-api-1
+
+docker ps -a
