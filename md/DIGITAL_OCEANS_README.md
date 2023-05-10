@@ -152,4 +152,160 @@ source FastStupnsAPI2/bin/activate
 deactivate
 
 mkdir src
+cd src
+git clone https://github.com/stupns/FastStupnsAPI2.git .
+
+cd ..
+source FastStupnsAPI2/bin/activate
+cd src
+pip install -r requirements.txt
 ```
+_____
+__Warning:__ Fix bugs :
+
+```text
+Failed to build psycopg2
+ERROR: Could not build wheels for psycopg2, which is required to install pyproject.toml-based projects
+```
+
+Fix :
+```commandline
+deactivate
+sudo apt install libpq-dev
+```
+____
+
+## Run project:
+
+```commandline
+ uvicorn app.main:app --reload
+ 
+```
+__Warning:__ Fix bugs :
+```text
+DB_HOST
+  field required (type=value_error.missing)
+DB_PORT
+  field required (type=value_error.missing)
+DB_PASSWORD
+  field required (type=value_error.missing)
+DB_USERNAME
+  field required (type=value_error.missing)
+DB_NAME
+  field required (type=value_error.missing)
+SECRET_KEY
+  field required (type=value_error.missing)
+ALGORITHM
+  field required (type=value_error.missing)
+ACCESS_TOKEN_EXPIRE_MINUTES
+  field required (type=value_error.missing)
+```
+
+Next steps:
+```commandline
+cd ~
+touch .env
+vi .env
+```
+
+Add all variables from env and save.
+
+```commandline
+ set -o allexport; source /home/stupns/.env; set +o allexport
+```
+
+And when we write **_printenv_** we can see that all variables added to systemvars.
+__Warning:__ But when we reboot machine all variables will be resets.
+
+Fix next:
+```commandline
+ vi .profile
+```
+and add previous code:
+```text 
+set -o allexport; source /home/stupns/.env; set +o allexport
+```
+save and reboot:
+```commandline
+sudo reboot 
+```
+<p style="color:green">--Complete--</p>
+
+""
+
+## Create db and check connection
+
+db_name: db_fast_stupns_api2
+
+```commandline
+alembic upgrade head
+```
+```text
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 86d42f033b57, create posts table
+INFO  [alembic.runtime.migration] Running upgrade 86d42f033b57 -> 8a33c1201619, add content column to posts table
+INFO  [alembic.runtime.migration] Running upgrade 8a33c1201619 -> 73d00a5fcf7b, add user table
+INFO  [alembic.runtime.migration] Running upgrade 73d00a5fcf7b -> 00e241a4645a, add foreign-key to posts table
+INFO  [alembic.runtime.migration] Running upgrade 00e241a4645a -> b09e5d38b78b, add last few columns to posts table
+INFO  [alembic.runtime.migration] Running upgrade b09e5d38b78b -> 7b349241c439, auto-vote
+INFO  [alembic.runtime.migration] Running upgrade 7b349241c439 -> d88845fc56fe, add phone number
+```
+<p style="color:green">--Complete--</p>
+
+## Start server 
+
+```commandline
+uvicorn app.main:app 
+```
+http://127.0.0.1:8000
+
+__Warning:__ Fix troubles
+
+```commandline
+uvicorn --host 0.0.0.0 app.main:app 
+```
+http://165.232.127.31:8000/
+
+## Install Gunicorn and run workers for fast work
+
+```commandline
+pip install gunicorn
+pip install uvloop
+pip install uvtools
+
+gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000
+```
+
+Change code for background mode:
+
+create file gunicorn.service:
+```text
+[Unit]
+Description=demo fastapi application
+After=network.target
+
+[Service]
+User=stupns
+Group=stupns
+WorkingDirectory=/home/stupns/app/src/
+Environment="PATH=/home/stupns/app/FastStupnsAPI2/bin"
+EnvironmentFile=/home/stupns/.env
+ExecStart=/home/stupns/app/FastStupnsAPI2/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```commandline
+cd etc/systemd/system/
+sudo vi api.service
+```
+and paste code from gunicorn.service.
+```commandline
+systemctl start api
+systemctl status api
+systemctl enable api
+```
+
+<p style="color:green">--Complete--</p>

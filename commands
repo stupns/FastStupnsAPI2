@@ -1,12 +1,15 @@
+
+http://165.232.127.31:8000/
+
 pip install -r requirements.txt
 
 uvicorn app.main:app --reload
 
-http://127.0.0.1:8000/docs - check available
+http://127.0.0.1:8000/docs       # check available
 http://127.0.0.1:8000/redoc
 
-## commands alembic
-
+## ALEMBIC
+_______________________________________________________________________________________________________________________
 alembic revision -m "create posts table"
 
 alembic revision                 # Same here, but for generating a random message
@@ -21,22 +24,25 @@ alembic downgrade 86d42f033b57   # return to the previous revision
 
 alembic revision --autogenerate -m "auto-vote"
 
-## commands heroku
-
-heroku login
+## HEROKU
+_______________________________________________________________________________________________________________________
+heroku login                     # start service heroku
 heroku run "alembic upgrade head"
-git push heroku main
-heroku ps:restart
+git push heroku main             # update project from github to heroku
+heroku ps:restart                # restart service
 
-## commands ubuntu
+## DIGITAL OCEANS
+_______________________________________________________________________________________________________________________
+http://165.232.127.31:8000/
 
-su - postgres
+ssh stupns@165.232.127.31        # open hosting
+source FastStupnsAPI2/bin/activate
+
+adduser stupns                   # add new users
+su - stupns                      # change user
 exit
 
-systemctl restart postgresql
-
-adduser stupns                       # add new users
-
-ssh stupns@165.232.127.31
-
-source FastStupnsAPI2/bin/activate
+printenv                         # show all environments in ubuntu
+systemctl restart postgresql     # restart service
+systemctl status api
+systemctl enable api             # always start service when we restart machine
