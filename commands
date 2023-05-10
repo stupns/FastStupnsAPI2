@@ -43,9 +43,9 @@ su - stupns                      # change user
 exit
 
 printenv                         # show all environments in ubuntu
-systemctl restart postgresql     # restart service
-systemctl status api
-systemctl enable api             # always start service when we restart machine
+sudo systemctl restart postgresql     # restart service
+sudo systemctl status api
+sudo systemctl enable api             # always start service when we restart machine
 
 ## NGINX
 _______________________________________________________________________________________________________________________

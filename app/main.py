@@ -28,4 +28,5 @@ app.include_router(vote.router)
 
 @app.get('/')
 async def root():
-    return print('Вийди звідси, розбійник')
+    m = 'Вийди звідси, розбійник'
+    return m

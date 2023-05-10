@@ -94,3 +94,8 @@ docker push stupns/fastapistupns2
 ```
 ____
 https://hub.docker.com/r/stupns/fastapistupns2/tags
+
+___________
+```commandline
+docker-compose -f docker-compose-dev.yml up -d 
+```
