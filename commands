@@ -66,6 +66,7 @@ docker ps -a
 docker-compose -f docker-compose-dev.yml up -d
 docker push stupns/fastapistupns2
 _______________________________
-fix bugs
+fix bugs with systemctl
 
-sudo systemctl restart api.service
+sudo journalctl -u api
+sudo systemctl restart api

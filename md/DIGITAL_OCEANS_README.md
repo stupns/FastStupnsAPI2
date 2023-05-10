@@ -291,12 +291,12 @@ Group=www-data
 WorkingDirectory=/home/stupns/app/src/
 Environment="PATH=/home/stupns/app/FastStupnsAPI2/bin"
 EnvironmentFile=/home/stupns/.env
-ExecStart=/home/stupns/app/FastStupnsAPI2/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000
+ExecStart=/home/stupns/app/FastStupnsAPI2/bin/gunicorn -w 2 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000
 
 [Install]
 WantedBy=multi-user.target
 ```
-
+ 
 ```commandline
 cd etc/systemd/system/
 sudo vi api.service
