@@ -68,6 +68,9 @@ jobs:
 
 We have error in git with env variables. Fix:
 
+Repository>Settings>Secrets: and add all variables
+![](..\img\repos_secrets.png)
+
 ```text
 jobs:
   jobs1:
