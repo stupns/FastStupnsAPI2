@@ -48,6 +48,8 @@ on: [push, pull_request]
 
 jobs:
   jobs1:
+    environment:
+      name: testing
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
@@ -74,14 +76,32 @@ Repository>Settings>Secrets: and add all variables
 ```text
 jobs:
   jobs1:
+    
     env:
-      DB_HOST:${{secrets.DB_HOST}}
-      DB_PORT:${{secrets.DB_PORT}}
-      DB_PASSWORD:${{secrets.DB_PASSWORD}}
-      DB_USERNAME:${{secrets.DB_USERNAME}}
-      DB_NAME:${{secrets.DB_NAME}}
-      SECRET_KEY:${{secrets.SECRET_KEY}}
-      ALGORITHM:${{secrets.ALGORITHM}}
-      ACCESS_TOKEN_EXPIRE_MINUTES:${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
+      DB_HOST: ${{secrets.DB_HOST}}
+      DB_PORT: ${{secrets.DB_PORT}}
+      DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+      DB_USERNAME: ${{secrets.DB_USERNAME}}
+      DB_NAME: ${{secrets.DB_NAME}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
+```
 
+Next error with DB. Fix:
+
+```text
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}
+          POSTGRES_DB: ${{secrets.DB_NAME}}_name
+        ports:
+        - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 ```
