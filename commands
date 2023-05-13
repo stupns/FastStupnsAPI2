@@ -1,4 +1,4 @@
-
+ssh stupns@165.232.127.31             # open hosting
 http://165.232.127.31:8000/
 
 pip install -r requirements.txt
@@ -26,23 +26,23 @@ alembic revision --autogenerate -m "auto-vote"
 
 ## HEROKU
 _______________________________________________________________________________________________________________________
-heroku login                     # start service heroku
+heroku login                          # start service heroku
 heroku run "alembic upgrade head"
-git push heroku main             # update project from github to heroku
-heroku ps:restart                # restart service
+git push heroku main                  # update project from github to heroku
+heroku ps:restart                     # restart service
 
 ## DIGITAL OCEANS
 _______________________________________________________________________________________________________________________
 http://165.232.127.31:8000/
 
-ssh stupns@165.232.127.31        # open hosting
+ssh stupns@165.232.127.31             # open hosting
 source FastStupnsAPI2/bin/activate
 
-adduser stupns                   # add new users
-su - stupns                      # change user
+adduser stupns                        # add new users
+su - stupns                           # change user
 exit
 
-printenv                         # show all environments in ubuntu
+printenv                              # show all environments in ubuntu
 sudo systemctl restart postgresql     # restart service
 sudo systemctl status api
 sudo systemctl enable api             # always start service when we restart machine
@@ -70,3 +70,13 @@ fix bugs with systemctl
 
 sudo journalctl -u api
 sudo systemctl restart api
+
+## PYTEST
+______________________________________________________________________________________________________________________
+pytest --disable-warnings
+pytest -v -s
+pytest --disable-warnings -v -x         # The pause of the test-taking process after the first failure
+
+pytest tests\test_users.py -v -s        # Run tests for test_users
+pytest tests\test_posts.py -v -s        # Run tests for test_posts
+pytest tests\test_votes.py -v -s        # Run tests for test_votes
