@@ -16,3 +16,25 @@ Current manual process:
 
 ____
 https://docs.github.com/ru/actions
+
+```text
+name: Build and Deploy Code
+
+on: [push, pull_request]
+
+jobs:
+  jobs1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pulling git repo
+        uses: actions/checkout@v2
+      - name: Install python version 3.11
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.11"
+      - name: update pip
+        run: python -m pip install --upgrade pip
+      - name: install all dependencies
+        run: pip install -r requirements.txt
+```
+![](..\img\depl1.png)
