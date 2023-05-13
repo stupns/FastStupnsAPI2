@@ -38,3 +38,47 @@ jobs:
         run: pip install -r requirements.txt
 ```
 ![](..\img\depl1.png)
+
+## Add tests
+
+```text
+name: Build and Deploy Code
+
+on: [push, pull_request]
+
+jobs:
+  jobs1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pulling git repo
+        uses: actions/checkout@v2
+      - name: Install python version 3.11
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.11"
+      - name: update pip
+        run: python -m pip install --upgrade pip
+      - name: install all dependencies
+        run: pip install -r requirements.txt
+      - name: test with pytest
+        run: |
+          pip install pytest
+          pytest
+```
+
+We have error in git with env variables. Fix:
+
+```text
+jobs:
+  jobs1:
+    env:
+      DB_HOST:${{secrets.DB_HOST}}
+      DB_PORT:${{secrets.DB_PORT}}
+      DB_PASSWORD:${{secrets.DB_PASSWORD}}
+      DB_USERNAME:${{secrets.DB_USERNAME}}
+      DB_NAME:${{secrets.DB_NAME}}
+      SECRET_KEY:${{secrets.SECRET_KEY}}
+      ALGORITHM:${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES:${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
+
+```
