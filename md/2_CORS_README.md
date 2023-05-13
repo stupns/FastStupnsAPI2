@@ -1,5 +1,5 @@
-## CORS in FastAPI:
-
+# CORS in FastAPI:
+___
 In main.py
 
 ```python

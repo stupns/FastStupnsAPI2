@@ -74,7 +74,7 @@ sudo systemctl restart api
 ## PYTEST
 ______________________________________________________________________________________________________________________
 pytest --disable-warnings
-pytest -v -s
+pytest -v -s                            # Run all tests
 pytest --disable-warnings -v -x         # The pause of the test-taking process after the first failure
 
 pytest tests\test_users.py -v -s        # Run tests for test_users
