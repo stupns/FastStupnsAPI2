@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import RedirectResponse
 
 from . import models
 from .database import engine
@@ -28,5 +29,4 @@ app.include_router(vote.router)
 
 @app.get('/')
 async def root():
-    m = 'Вийди звідси, розбійник'
-    return m
+    return RedirectResponse("/docs")
