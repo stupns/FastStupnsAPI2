@@ -98,7 +98,7 @@ Next error with DB. Fix:
           POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}
           POSTGRES_DB: ${{secrets.DB_NAME}}_name
         ports:
-        - 5432:5432
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
