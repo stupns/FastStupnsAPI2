@@ -12,8 +12,7 @@ from app import models
 from app.oauth2 import create_access_token
 
 
-TEST_DATABASE_URL = f"postgresql://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@{settings.DB_HOST}:" \
-                          f"{settings.DB_PORT}/{settings.DB_TEST_NAME}"
+TEST_DATABASE_URL = f"postgresql://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_TEST_NAME}"
 engine = create_engine(TEST_DATABASE_URL)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
