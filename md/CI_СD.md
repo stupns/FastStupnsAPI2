@@ -116,3 +116,31 @@ copy and add 2 variable to repos in github:
 
 DOCKER_HUB_USERNAME : stupns (name repos in docker hub)
 DOCKER_HUB_ACCESS_TOKEN : paste from generated
+
+```text
+     - name: Login to Docker Hub
+       uses: docker/login-action@v1
+       with:
+         username: ${{ secrets.DOCKER_HUB_USERNAME }}
+         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+     - name: Set up Docker Buildx
+       id: buildx
+       uses: docker/setup-buildx-action@v1
+
+     - name: Build and push
+       id: docker_build
+       uses: docker/build-push-action@v2
+       with:
+         context: ./
+         file: ./Dockerfile
+         builder: ${{ steps.buildx.outputs.name }}
+         push: true
+         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/fastapistupns2:latest
+         cache-from: type=local,src=/tmp/.buildx-cache
+         cache-to: type=local,dest=/tmp/.buildx-cache
+     - name: Image digest
+       run: echo ${{ steps.docker_build.outputs.digest }}
+```
+
+## DEPLOY
