@@ -105,3 +105,14 @@ Next error with DB. Fix:
           --health-timeout 5s
           --health-retries 5
 ```
+
+## Docker in CI/CD
+
+https://hub.docker.com/r/stupns/fastapistupns2/tags
+
+settings>security>generate accesstoken
+
+copy and add 2 variable to repos in github:
+
+DOCKER_HUB_USERNAME : stupns (name repos in docker hub)
+DOCKER_HUB_ACCESS_TOKEN : paste from generated
