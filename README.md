@@ -1,5 +1,11 @@
 # Backend clone  of social media app by using FastAPI
+> **_NOTE:_** Previous stage development project: 
+> 
+> https://github.com/stupns/FastStupnsAPI
+> 
 ___
+
+Web-site:
 https://stupns.fun/
 
 # This API  has 4 routes:
