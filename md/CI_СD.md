@@ -144,3 +144,42 @@ DOCKER_HUB_ACCESS_TOKEN : paste from generated
 ```
 
 ## DEPLOY
+
+To start we need setup next variables:
+
+```text
+secrets.HEROKU_API_KEY
+secrets.HEROKU_APP_NAME
+secrets.HEROKU_EMAIL
+secrets.PROD_HOST
+secrets.PROD_USERNAME
+secrets.PROD_PASSWORD
+```
+After add:
+```text
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment:
+      name: production
+    steps:
+      - name: pulling git repo
+        uses: actions/checkout@v2
+      - name: deploying to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+
+      - name: deploy to ubuntu server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.PROD_HOST}}
+          username: ${{secrets.PROD_USERNAME}}
+          password: ${{secrets.PROD_PASSWORD}}
+          script: |
+            cd app/src
+            git pull
+            echo ${{secrets.PROD_PASSWORD}} | sudo -S systemctl restart api
+```

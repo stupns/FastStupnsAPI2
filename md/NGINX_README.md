@@ -1,5 +1,12 @@
 ## Install nginx
 
+Nginx is a web server software that is used to serve web content, reverse proxy, and load balance HTTP and HTTPS traffic.
+It is known for its high performance, scalability, and reliability. Nginx is free and open-source software, and it can
+run on a variety of operating systems, including Linux, Windows, and macOS. It is widely used by websites and web
+applications to handle high traffic and improve the performance and security of their systems. Nginx also supports
+various plugins and modules, which allows developers to customize its functionality to fit their needs.
+
+
 ```commandline
 sudo apt install nginx -y
 systemctl start nginx
@@ -33,3 +40,4 @@ systemctl restart nginx
 
 ![](..\img\hostiq.png)
 ![](..\img\digitaloc.png)
+![](..\img\domens.png)

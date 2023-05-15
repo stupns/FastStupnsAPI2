@@ -1,6 +1,6 @@
 # Alembic commands
 
-create revision:
+Create revision:
 
 ```commandline
 alembic revision -m "create posts table"
@@ -13,7 +13,7 @@ After executing the command 'alembic current', Alembic checks the database and c
 of migrations that were previously executed. As a result, you will receive information about the latest executed migration
 and the current status of the database.
 
-Y need add functional to py file 86d42f033b57_create_posts_table.py:
+U need add functional to py file 86d42f033b57_create_posts_table.py:
 
 ```python
 def upgrade():
@@ -25,7 +25,7 @@ def downgrade():
     op.drop_table('posts')
     pass
 ```
-and push next command:
+And pushing:
 
 ```commandline
 alembic upgrade 86d42f033b57
@@ -41,7 +41,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 86d42f033b57, create posts
 
 ## Add content column
 
-create revision:
+Create revision:
 
 ```commandline
 alembic revision -m "add content column to posts table"
@@ -131,6 +131,7 @@ INFO  [alembic.runtime.migration] Running upgrade 8a33c1201619 -> 73d00a5fcf7b, 
 ```
 
 ## Alembic add foreign-key to Posts table
+
 ```commandline
 alembic revision -m "add foreign-key to posts table"
 ```
@@ -189,7 +190,7 @@ alembic upgrade +1
 alembic revision --autogenerate -m "auto-vote"
 ```
 
-## Add new fields in models and ugrade
+## Add new fields in models and upgrade
 
 In models add field :
 
@@ -197,7 +198,6 @@ In models add field :
 class User(Base):
    ...
     phone_number = Column(String)
-
 ```
 
 and create revision autogenerate:

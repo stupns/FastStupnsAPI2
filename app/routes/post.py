@@ -31,7 +31,7 @@ def create_posts(post: schemas.PostCreate, db: Session = Depends(get_db),
                  current_user: int = Depends(get_current_user)):
     # print(current_user.email)
     # new_post = models.Post(title=post.title, content=post.content, published=post.published)  bellow format if
-    # we haw too much variables
+    # we have too many variables
     new_post = models.Post(owner_id=current_user.id, **post.dict())
     db.add(new_post)
     db.commit()

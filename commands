@@ -1,12 +1,10 @@
-ssh stupns@165.232.127.31             # open hosting
+ssh stupns@165.232.127.31             # open hosting in terminal
 http://165.232.127.31:8000/
 
-pip install -r requirements.txt
-
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload         # run local server
 
 http://127.0.0.1:8000/docs       # check available
-http://127.0.0.1:8000/redoc
+http://127.0.0.1:8000/redoc      # check short version
 
 ## ALEMBIC
 _______________________________________________________________________________________________________________________
@@ -22,12 +20,12 @@ alembic upgrade heads
 
 alembic downgrade 86d42f033b57   # return to the previous revision
 
-alembic revision --autogenerate -m "auto-vote"
+alembic revision --autogenerate -m "auto-vote"    # return to the previous revision
 
 ## HEROKU
 _______________________________________________________________________________________________________________________
 heroku login                          # start service heroku
-heroku run "alembic upgrade head"
+heroku run "alembic upgrade head"     # update last changes alembic to heroku
 git push heroku main                  # update project from github to heroku
 heroku ps:restart                     # restart service
 
@@ -36,7 +34,7 @@ ________________________________________________________________________________
 http://165.232.127.31:8000/
 
 ssh stupns@165.232.127.31             # open hosting
-source FastStupnsAPI2/bin/activate
+source FastStupnsAPI2/bin/activate    # activate venv
 
 adduser stupns                        # add new users
 su - stupns                           # change user
@@ -46,6 +44,12 @@ printenv                              # show all environments in ubuntu
 sudo systemctl restart postgresql     # restart service
 sudo systemctl status api
 sudo systemctl enable api             # always start service when we restart machine
+
+# Fix bugs with systemctl:
+
+sudo journalctl -u api                # show journal logs
+sudo systemctl restart postgresql
+sudo systemctl restart api
 
 ## NGINX
 _______________________________________________________________________________________________________________________
@@ -65,11 +69,6 @@ docker ps -a
 
 docker-compose -f docker-compose-dev.yml up -d
 docker push stupns/fastapistupns2
-_______________________________
-fix bugs with systemctl
-
-sudo journalctl -u api
-sudo systemctl restart api
 
 ## PYTEST
 ______________________________________________________________________________________________________________________

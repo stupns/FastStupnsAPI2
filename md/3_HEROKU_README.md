@@ -35,6 +35,7 @@ heroku addons:create heroku-postgresql:mini
 Open Datastories>heroku-postgresql > Settings > Credentials
 copy data and paste in 
 fastapi-stupns > Settings > Config Vars
+
 ![](..\img\1.png)
 
 ```commandline
@@ -43,6 +44,7 @@ heroku ps:restart
 heroku apps:info fastapi-stupns
 
 ```
-work url:
+___
+Work url:
 
 https://fastapi-stupns.herokuapp.com/
