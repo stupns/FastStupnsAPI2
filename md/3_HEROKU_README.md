@@ -36,7 +36,7 @@ Open Datastories>heroku-postgresql > Settings > Credentials
 copy data and paste in 
 fastapi-stupns > Settings > Config Vars
 
-![](..\img\1.png)
+![](https://github.com/stupns/FastStupnsAPI2/blob/main/img/1.png)
 
 ```commandline
 heroku ps:restart

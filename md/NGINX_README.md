@@ -38,9 +38,9 @@ systemctl restart nginx
 
 ## Register domain
 
-![](..\img\hostiq.png)
-![](..\img\digitaloc.png)
-![](..\img\domens.png)
+![](https://github.com/stupns/FastStupnsAPI2/blob/main/img/hostiq.png)
+![](https://github.com/stupns/FastStupnsAPI2/blob/main/img/digitaloc.png)
+![](https://github.com/stupns/FastStupnsAPI2/blob/main/img/domens.png)
 ___
 
 [<-- prev step](DIGITAL_OCEANS_README.md)_______________________________________[next step -->](Firewall_README.md)

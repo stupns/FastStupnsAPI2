@@ -1,10 +1,12 @@
+# DIGITAL OCEANS HOSTING
 https://cloud.digitalocean.com/droplets/
+___
 
-create tagname in field hostname:
+Create tagname in field hostname:
 ubuntu-fastapi
 
 Open terminal:
-![](..\img\2.png)
+![](https://github.com/stupns/FastStupnsAPI2/blob/main/img/2.png)
 
 copy ip-addrest and connect to ssh wirh previlegies root:
 ```commandline
