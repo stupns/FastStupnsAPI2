@@ -12,3 +12,6 @@ sudo ufw status
 ```
 
 > __Note:__  If u want delete notification, use **sudo ufw delete allow 5432**
+
+___
+[<-- prev step](NGINX_README.md)_______________________________________[next step -->](SSL_README.md)

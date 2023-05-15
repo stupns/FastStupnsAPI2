@@ -74,3 +74,5 @@ def test_vote_unauthorized_user(client, test_posts):
         "/vote/", json={"post_id": test_posts[3].id, "dir": 1})
     assert res.status_code == 401
 ```
+___
+[<-- prev step](TESTS_POSTS_README.md)

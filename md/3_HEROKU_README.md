@@ -48,3 +48,5 @@ ___
 Work url:
 
 https://fastapi-stupns.herokuapp.com/
+___
+[<-- prev step](2_CORS_README.md)_______________________________________[next step -->](DIGITAL_OCEANS_README.md)

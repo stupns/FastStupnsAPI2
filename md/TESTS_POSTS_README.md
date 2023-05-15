@@ -328,3 +328,4 @@ def test_update_post_non_exist(authorized_client, test_user, test_posts):
     assert res.status_code == 404
 ```
 ___
+[<-- prev step](TESTS_USERS_README.md)_______________________________________[next step -->](TESTS_VOTES_README.md)

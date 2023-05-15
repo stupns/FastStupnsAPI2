@@ -206,3 +206,5 @@ and create revision autogenerate:
 alembic revision --autogenerate -m "add phone number"
 alembic upgrade head
 ```
+___
+[<-- prev step](1_CONFIGURE_ALEMBIC_README.md)_______________________________________[next step -->](2_CORS_README.md)

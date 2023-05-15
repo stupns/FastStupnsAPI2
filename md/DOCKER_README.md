@@ -95,7 +95,11 @@ docker push stupns/fastapistupns2
 ____
 https://hub.docker.com/r/stupns/fastapistupns2/tags
 
-___________
+Build and update dev.yml:
+
 ```commandline
 docker-compose -f docker-compose-dev.yml up -d 
 ```
+
+___
+[<-- prev step](SSL_README.md)_______________________________________[next step -->](TESTS_USERS_README.md)
